@@ -1,4 +1,4 @@
-*! version 1.0.0  12aug2025
+*! version 1.0.1  13aug2025
 program markobs
     
     version 11.2
@@ -26,7 +26,7 @@ program markobs
     
     if ("`OK'" != "OK") {
         
-        display as err "`markvar' not created by marktouse"
+        display as err "`markvar' not created by markobs"
         exit 498
         
     }
@@ -34,3 +34,12 @@ program markobs
     markout `macval(0)'
     
 end
+
+
+exit
+
+
+/*  _________________________________________________________________________
+
+1.0.1   13aug2025   fix error message
+1.0.0   12aug2025   release on GitHub   

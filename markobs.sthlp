@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0.0  12aug2025}{...}
+{* *! version 1.1.0  13aug2025}{...}
 {cmd:help markobs}
 {hline}
 
@@ -66,7 +66,7 @@ specifies that string variables in {it:varlist} are to be allowed.
 
 {pmore}
     "The marker variable is set to 0 in observations for which any of 
-      the string variables in {it:varlist} contain {cmd:""}."
+      the string variables in {it:varlist} is empty (contain {cmd:""})."
 
 {phang}
 {cmd:sysmissok} 
@@ -127,7 +127,20 @@ When you use {cmd:markobs}, the following rules apply:
 {title:Example}
 
 {pstd}
-None.
+Setup{p_end}
+{phang2}
+{cmd:. sysuse auto}
+
+{pstd}
+Create a marker variable, {cmd:touse}, indicating foreign cars{p_end}
+{phang2}
+{cmd:. markobs touse if foreign == 1}
+
+{pstd}
+Modify the marker variable 
+to exclude observations with missing values on {cmd:rep78}{p_end}
+{phang2}
+{cmd:. markobs touse rep78}
 
 
 {title:Acknowledgments}
