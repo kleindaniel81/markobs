@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.1.0  13aug2025}{...}
+{* *! version 1.2.0  15aug2025}{...}
 {cmd:help markobs}
 {hline}
 
@@ -12,14 +12,14 @@
 
 {title:Syntax}
 
-    Create marker variable
+    Create new marker variable
 
 {p 8 19 2}{cmd:markobs} {it:newmarkvar}
 {ifin} {weight}
 [{cmd:,} {cmdab:zero:weight} {it:{help markobs##mark_options:mark_options}}]
 
 
-    Modify marker variable
+    Modify existing marker variable
 
 {p 8 19 2}{cmd:markobs} {it:markvar} {varlist} [{cmd:,}
 {cmdab:s:trok}
@@ -45,11 +45,27 @@ and
 commands. 
 It creates and modifies a 0/1 to-use variable
 that records which observations are to be used in subsequent code. 
+
+{pstd}
+The syntax diagrams reflect the workflow. 
+The first syntax creates a new 0/1 to-use variable, {it:newmarkvar}, 
+and sets it to 0 for observations 
+that do not satisfy the {cmd:if} expression, 
+fall outside the {cmd:in} range, 
+or have a {it:weight} of zero
+(see rules 1--4 and 7 in {it:Remarks} below).
+No {it:varlist} is allowed.
+
+{pstd}
+Subsequent calls to {cmd:markobs} further restrict observations 
+by setting an existing 0/1 to-use variable to 0 
+if any of the variables in {it:varlist} are strings 
+or contain missing values (see rules 5 and 6 in {it:Remarks} below).
 {cmd:markobs} 
 will exit with an error 
 if the specified marker variable, {it:markvar}, was not created by {cmd:markobs}. 
 This behavior reduces the risk of unintentionally overwriting an existing variable 
-when the marker variable name is omitted or mis-specified. 
+when the marker variable name is omitted or misspecified. 
 
 
 {title:Options}
